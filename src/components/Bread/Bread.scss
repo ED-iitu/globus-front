@@ -1,0 +1,12 @@
+.bread {
+    padding: 20px 0;
+    margin-top: 40px;
+    &__link {
+        text-transform: uppercase;
+        color: #7E8474;
+        font-size: 18px;
+        span {
+            padding: 0 10px;
+        }
+    }
+}

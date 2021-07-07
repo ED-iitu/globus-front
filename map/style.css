@@ -1,0 +1,101 @@
+@font-face
+{
+
+	font-family: TTHoves_medium;
+	src: url("TTHoves-Medium.ttf");
+}
+@font-face
+{
+
+	font-family: TTHoves;
+	src: url("TTHoves-Thin.ttf");
+}
+.modalmap p{
+	font-family: TTHoves_medium;
+	color: #7E8474;
+	font-size: 12px;
+}
+.modal-header{
+background-color: #8ABB09;
+}
+.mapgrad
+{
+ border: 3px solid #8ABB09 !important;
+}
+h1.maptitle
+{
+	font-size: 2rem;
+	color:#8ABB09;
+}
+h1.maptitleact
+{
+	font-size: 2rem;
+	color:white;
+}
+.mapnav{
+    position: absolute;
+    width: 23%;
+    left: 45%;
+    top: 33px;
+    text-align: center;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px 5px;
+    border-radius: 3px;
+}
+.mapgradact{
+ border: 3px solid white !important;
+ background-color: #8ABB09;
+ color: white;	
+}
+a.reffloor:hover{
+	background-color: green;
+	color:green;
+}
+img.logopic{
+display: flex;
+    justify-content: center;
+    align-items: center;
+    object-position: center;
+    -o-object-fit: cover;
+    height: 100%;
+    object-fit: scale-down; width: 100%
+
+}
+.modallogo
+{
+
+	color: #8ABB09;
+}
+h1.fontlogo
+{
+	color:#8ABB09;
+	font-weight: 900;
+	font-size: 1.25rem;
+}
+.map
+{
+    position: absolute;
+    text-align: center;
+}
+svg
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+path
+{
+    opacity: 0.1;
+    fill: green;
+    cursor: pointer;
+    transition: 0.3s;
+}
+path:hover
+{
+    border:1px solid black;
+    opacity: 0.6;
+    transition: 0.3s;
+}

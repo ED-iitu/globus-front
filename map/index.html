@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta chraset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<script type="text/javascript">
+	document.body.style.zoom="50%"
+</script>
+<script type="text/javascript" src="js/data.js"></script>
+<title>Интерактивная карта Глобус</title>
+</head>
+<body >
+
+	<div id="app">
+	<div class="map">
+		<svg viewBox="0 0 1121 644">
+		<a v-for="info in infos" type="button" class="btn btn-primary" data-toggle="modal" v-bind:data-target="'#'+info.id">
+			<path :d="info.d" />
+		</a>
+		<div v-for="info in infos" class="modal fade" :id="info.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  				<div class="modal-dialog modal-dialog-centered" style="max-width: 750px;" role="document">
+    				<div class="modal-content">
+    				  <div class="modal-header">
+      					  <h6 class="modal-title"style="color:white; font-size:1rem" :id="info.id">Карта ТРЦ Globus</h5>
+      					  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         						 <span style="color:white; font-weight: 100;" aria-hidden="true">&times;</span>
+       						 </button>
+     				 </div>
+     				 <div class="modalmap modal-body" style="font-size:1.5rem; background-color: #E5E5E5;">
+      					<div style="margin-top: 25px" class="container">
+      						<div class="row">
+      							<div class="col-lg-6">
+      								<div class="row">
+      									<div style="background-color: white; text-align: center;" class="offset-lg-2 col-lg-4">
+      										<img align="left" class="logopic":src="'images/'+info.id+'_logo.jpg'" />
+      									</div>
+      									<div align="left"class="col-lg-6">
+						      				<h1 class="fontlogo">{{info.name}}</h1>
+						      				<p style="margin-top: 20px;">1 этаж <br>
+						      				10:00-22:00</p>
+						      			</div>
+      								</div>
+					      			<div class="row">
+					      				<div style="text-align: left; margin-top: 25px;" class="col-lg-12">
+					      				<p>{{info.text}}
+									   </p>
+					      				</div>
+      								</div>
+      							</div>
+						      	<div class="col-lg-5" align="left">
+						      		<img :src="'images/'+info.id+'.jpg'" width="125%"/>
+						      </div>
+      
+  							</div>
+  						</div>
+    				</div>
+				   	 <div align="right" style=" background-color: #E5E5E5;" class="modal-footer">
+				        <button type="button" style="font-size: 15px;background-color: #8ABB09; color:white;" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+				      </div>
+  					</div>
+				</div>
+			</div>
+
+
+			</svg>
+			<div class="row mapnav">
+
+				<div class="col-lg-6 mapgrad">
+					
+					<h1 class="maptitle">
+						ЭТАЖИ
+					</h1>
+
+				</div>
+				<div class="col-lg-2 mapgrad">
+					<a class="reffloor" href="0floor.html" >
+					<h1 class="maptitle">
+						0
+					</h1>
+					</a>
+				</div>
+				<div class="col-lg-2 mapgrad mapgradact">
+					<a class="reffloor" href="index.html">
+					<h1 class="maptitleact">
+						1
+					</h1>
+				</a>
+				</div>
+				<div class="col-lg-2 mapgrad">
+					<a class="reffloor" href="2floor.html">
+					<h1 class="maptitle" >
+						2
+					</h1>
+				</a>
+				</div>
+			</div>
+			<img src="images/1floor.jpg" style="width: 100%" alt="карта первого этажа">
+		</div>
+
+
+			
+
+
+
+		
+	</div>
+
+</body>
+<footer>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+	var app = new Vue({
+  
+  el: '#app',
+  data: {
+    infos: []=data.Data
+  }
+ 
+})
+</script>
+
+</footer>
+</html>
