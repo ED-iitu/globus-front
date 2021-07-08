@@ -1,7 +1,18 @@
 import React from 'react'
 import Bread from '../components/Bread/Bread'
+import API from "../utils/api";
+import {API_URL} from "../utils/env";
 
 export default function Promotions() {
+    const [data, setData] = React.useState([]);
+
+    React.useEffect(() => {
+        API.get(`/promotions`)
+            .then(res => {
+                setData(res.data?.promotions?.data || [])
+            })
+    }, []);
+
     return (
         <div>
             <div className="container">
@@ -11,48 +22,15 @@ export default function Promotions() {
 
                 <div className="row">
                     <div className="promotions">
-                        <div className="prom">
-                            <div className="prom_poster"></div>
-                            <div className="prom_info">
-                                <p className="prom_date">21.04.21</p>
-                                <h4 className="prom_title">Открытие магазина</h4>
+                        {data.map((item, index) => (
+                            <div className="prom">
+                                <div className="prom_poster" style={{backgroundImage: `url(${API_URL}${item.image})`}}></div>
+                                <div className="prom_info">
+                                    <p className="prom_date">{new Date(item.created_at).toLocaleDateString()}</p>
+                                    <h4 className="prom_title">{item.title}</h4>
+                                </div>
                             </div>
-                        </div>
-                        <div className="prom">
-                            <div className="prom_poster"></div>
-                            <div className="prom_info">
-                                <p className="prom_date">21.04.21</p>
-                                <h4 className="prom_title">Открытие магазина</h4>
-                            </div>
-                        </div>
-                        <div className="prom">
-                            <div className="prom_poster"></div>
-                            <div className="prom_info">
-                                <p className="prom_date">21.04.21</p>
-                                <h4 className="prom_title">Открытие магазина</h4>
-                            </div>
-                        </div>
-                        <div className="prom">
-                            <div className="prom_poster"></div>
-                            <div className="prom_info">
-                                <p className="prom_date">21.04.21</p>
-                                <h4 className="prom_title">Открытие магазина</h4>
-                            </div>
-                        </div>
-                        <div className="prom">
-                            <div className="prom_poster"></div>
-                            <div className="prom_info">
-                                <p className="prom_date">21.04.21</p>
-                                <h4 className="prom_title">Открытие магазина</h4>
-                            </div>
-                        </div>
-                        <div className="prom">
-                            <div className="prom_poster"></div>
-                            <div className="prom_info">
-                                <p className="prom_date">21.04.21</p>
-                                <h4 className="prom_title">Открытие магазина</h4>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
