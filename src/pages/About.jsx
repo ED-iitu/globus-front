@@ -5,12 +5,14 @@ import API from './../utils/api';
 
 export default function About() {
     const [data, setData] = React.useState([])
+    const [data2, setInfo] = React.useState([])
 
 
     React.useEffect(() => {
-        API.get(`/about`)
+        API.get(`/about/info`)
             .then(res => {
-                setData(res.data?.info)
+                setData(res.data?.about)
+                setInfo(res.data?.infographics)
             })
     }, [])
 
@@ -28,36 +30,45 @@ export default function About() {
             <div className="container">
                 <div className="row">
                     <div className="reasons">
-                        <div className="reason">
-                            <div className="icon"></div>
-                            <h3 className="title">Расположение</h3>
-                            <p className="content">Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов.</p>
-                        </div>
-                        <div className="reason">
-                            <div className="icon"></div>
-                            <h3 className="title">Расположение</h3>
-                            <p className="content">Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов.</p>
-                        </div>
-                        <div className="reason">
-                            <div className="icon"></div>
-                            <h3 className="title">Расположение</h3>
-                            <p className="content">Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов.</p>
-                        </div>
-                        <div className="reason">
-                            <div className="icon"></div>
-                            <h3 className="title">Расположение</h3>
-                            <p className="content">Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов.</p>
-                        </div>
-                        <div className="reason">
-                            <div className="icon"></div>
-                            <h3 className="title">Расположение</h3>
-                            <p className="content">Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов.</p>
-                        </div>
-                        <div className="reason">
-                            <div className="icon"></div>
-                            <h3 className="title">Расположение</h3>
-                            <p className="content">Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов.</p>
-                        </div>
+                        {data2.map((item, i) => (
+                            <>
+                                <div className="reason">
+                                    <div className={"icon icon" + (i + 1)}></div>
+                                    <h3 className="title">{item.title}</h3>
+                                    <p className="content">{item.description}</p>
+                                </div>
+                            </>
+                        ))}
+                        {/*<div className="reason">*/}
+                        {/*    <div className="icon"></div>*/}
+                        {/*    <h3 className="title">Расположение</h3>*/}
+                        {/*    <p className="content">Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов.</p>*/}
+                        {/*</div>*/}
+                        {/*<div className="reason">*/}
+                        {/*    <div className="icon"></div>*/}
+                        {/*    <h3 className="title">Расположение</h3>*/}
+                        {/*    <p className="content">Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов.</p>*/}
+                        {/*</div>*/}
+                        {/*<div className="reason">*/}
+                        {/*    <div className="icon"></div>*/}
+                        {/*    <h3 className="title">Расположение</h3>*/}
+                        {/*    <p className="content">Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов.</p>*/}
+                        {/*</div>*/}
+                        {/*<div className="reason">*/}
+                        {/*    <div className="icon"></div>*/}
+                        {/*    <h3 className="title">Расположение</h3>*/}
+                        {/*    <p className="content">Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов.</p>*/}
+                        {/*</div>*/}
+                        {/*<div className="reason">*/}
+                        {/*    <div className="icon"></div>*/}
+                        {/*    <h3 className="title">Расположение</h3>*/}
+                        {/*    <p className="content">Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов.</p>*/}
+                        {/*</div>*/}
+                        {/*<div className="reason">*/}
+                        {/*    <div className="icon"></div>*/}
+                        {/*    <h3 className="title">Расположение</h3>*/}
+                        {/*    <p className="content">Идейные соображения высшего порядка, а также убеждённость некоторых оппонентов.</p>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
 
@@ -69,7 +80,7 @@ export default function About() {
                     {data.map((item, i) => (
                         <>
                             <h3 className="sub-title">
-                                <span className="icon icon1"></span>
+                                <span className={'icon icon' + (i + 1) }></span>
                                 {item.title}
                             </h3>
                             <p className="text">{item.description}</p>
