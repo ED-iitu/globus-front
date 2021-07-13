@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" href="css/bootstrap.css">
-<script type="text/javascript">
-	document.body.style.zoom="50%"
-</script>
-<script type="text/javascript" src="js/data.js"></script>
 <title>Интерактивная карта Глобус</title>
 </head>
 <body >
@@ -17,7 +13,7 @@
 	<div class="map">
 		<svg viewBox="0 0 1121 644">
 		<a v-for="info in infos" type="button" class="btn btn-primary" data-toggle="modal" v-bind:data-target="'#'+info.id">
-			<path :d="info.d" />
+			<path v-bind:d="info.d" stroke-width="2" stroke="black" />
 		</a>
 		<div v-for="info in infos" class="modal fade" :id="info.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   				<div class="modal-dialog modal-dialog-centered" style="max-width: 750px;" role="document">
@@ -34,7 +30,7 @@
       							<div class="col-lg-6">
       								<div class="row">
       									<div style="background-color: white; text-align: center;" class="offset-lg-2 col-lg-4">
-      										<img align="left" class="logopic":src="'images/'+info.id+'_logo.jpg'" />
+      										<img align="left" class="logopic":src="server+info.logo" />
       									</div>
       									<div align="left"class="col-lg-6">
 						      				<h1 class="fontlogo">{{info.name}}</h1>
@@ -50,7 +46,7 @@
       								</div>
       							</div>
 						      	<div class="col-lg-5" align="left">
-						      		<img :src="'images/'+info.id+'.jpg'" width="125%"/>
+						      		<img :src="server+info.img" width="125%"/>
 						      </div>
       
   							</div>
@@ -119,9 +115,19 @@
   
   el: '#app',
   data: {
-    infos: []=data.Data
+    infos: [],
+	server: "http://portal.globus-almaty.kz"
+  },
+  mounted() {
+    axios
+      .get('http://portal.globus-almaty.kz/api/v1/map?floor=1')
+      .then(response => {this.infos = response.data.Data
+		this.infos.forEach(info => {
+			console.log(info.name+info.d);
+		});
+	});
+	  
   }
- 
 })
 </script>
 
