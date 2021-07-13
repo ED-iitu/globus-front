@@ -182,10 +182,12 @@ export default function Tabs(props) {
                                 <div className="icon" style={{backgroundImage: `url(${load})`}}></div>
                                 <p>Загрузить еще</p>
                             </div>
-                            <div className="btn green" onClick={() => alert('Show MAP!')}>
+                            <a href="/map">
+                            <div className="btn green">
                                 <div className="icon" style={{backgroundImage: `url(${map})`}}></div>
                                 <p>карта трц</p>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>

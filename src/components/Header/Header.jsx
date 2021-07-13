@@ -2,8 +2,17 @@ import React, {useState ,useEffect} from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import Icon from "./../../assets/icon.svg"
 import "./Header.scss"
-
+import API from "../../utils/api";
+import { API_URL } from './../../utils/env';
 function Header({props}) {
+    const [contacts, setData] = React.useState([]);
+
+    React.useEffect(() => {
+        API.get(`/contact/info`)
+            .then(res => {
+                setData(res.data?.info)
+            })
+    }, []);
     const [isMenuActive, setMenu] = useState(false)
     const [menuItem, setMenuItem] = useState()
     const menu = [
@@ -56,20 +65,20 @@ function Header({props}) {
                     </button>
                     <div className="tel">
                         <img src={Icon} alt="" />
-                        <p>+7 727 356 15 15</p>
+                        <a href="tel:+77273561515">{contacts.phone}</a>
                     </div>
                     <div className="social">
-                        <a href="#" className="social__icon fb"></a>
-                        <a href="#" className="social__icon ins"></a>
+                        <a href="https://www.facebook.com/pages/category/Shopping-Mall/%D0%A2%D0%A0%D0%A6-Globus-907269146129668/" className="social__icon fb"></a>
+                        <a href="https://www.instagram.com/globus_trc/?hl=ru" className="social__icon ins"></a>
                         <a href="#" className="social__icon vk"></a>
                     </div>
                     <div className="block location">
                         <div className="icon aim"></div>
-                        <p>Абая, 108в</p>
+                        <p>{contacts.adress}</p>
                     </div>
                     <div className="block time-interval">
                         <div className="icon clock"></div>
-                        <p>10:00 - 22:00</p>
+                        <p>{contacts.work_time}</p>
                     </div>
                     <div className="lang">
                         <a href="#" className="lang__item">KZ</a>

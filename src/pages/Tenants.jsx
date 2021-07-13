@@ -1,6 +1,14 @@
 import React from 'react'
-
+import API from "../utils/api";
 export default function Tenants() {
+    const [renters, setData] = React.useState([]);
+
+    React.useEffect(() => {
+        API.get(`/renter/info`)
+            .then(res => {
+                setData(res.data?.data)
+            })
+    }, []);
     return (
         <div className="container tenants">
             <div className="row">
@@ -12,16 +20,12 @@ export default function Tenants() {
                     </div>
                 </div>
                 <div className="article-wrapper">
-                    <div className="article">
-                        <h3 className="article_title">ТРЦ “Globus”</h3>
-                        <p className="article_text">Торговый центр имеет общую площадь более 26 000 квадратных метров и считается одним из крупнейших в столице Казахстана. </p>
-                        <p className="article_text">Ежедневно ТРЦ «Глобус» посещают тысячи гостей, что обеспечивает огромный поток покупателей в бутики и магазины центра. Если Вас интересует аренда бутиков в Алматы– это отличный вариант для прибыльной работы и процветания вашего бизнеса.</p>
-                    </div>
-                    <div className="article">
-                        <h3 className="article_title">бЦ “стандарт”</h3>
-                        <p className="article_text">Торговый центр имеет общую площадь более 26 000 квадратных метров и считается одним из крупнейших в столице Казахстана. </p>
-                        <p className="article_text">Ежедневно ТРЦ «Глобус» посещают тысячи гостей, что обеспечивает огромный поток покупателей в бутики и магазины центра. Если Вас интересует аренда бутиков в Алматы– это отличный вариант для прибыльной работы и процветания вашего бизнеса.</p>
-                    </div>
+                    {renters.map((item,i)=>(
+                         <div className="article">
+                         <h3 className="article_title">{item.title}</h3>
+                         <p className="article_text">{item.description}</p>
+                     </div>
+                    ))}
                 </div>
                 <form className="form">
                     <input type="text" placeholder="Ваше имя"/> <br />

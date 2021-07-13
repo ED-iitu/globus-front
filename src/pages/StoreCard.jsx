@@ -2,6 +2,7 @@ import React from 'react'
 import map from './../assets/map.svg'
 import API from "../utils/api";
 import { API_URL } from '../utils/env';
+import {Link} from 'react-router-dom'
 
 import { useParams } from 'react-router-dom';
 
@@ -22,7 +23,8 @@ export default function StoreCard() {
         <div className="store-card">
             <div className="container">
                 <div className="row">
-                    <div className="card">
+                
+                    <div className="card col-lg-6">
                         <div className="card__top">
                             {/* <img src={miniso} alt="ICON" /> */}
                             <div className="card__poster" style={{backgroundImage: `url(${API_URL}${facility.logo})`}}></div>
@@ -34,10 +36,10 @@ export default function StoreCard() {
                                 <span className="card__subtitle">{facility.work_time}</span>
                             </div>
                         </div>
-                        <div className="btn green" onClick={() => alert('Show MAP!')}>
+                        <Link to="/map" className="btn green" >
                             <div className="icon" style={{backgroundImage: `url(${map})`}}></div>
                             <p>карта трц</p>
-                        </div>
+                        </Link>
                         <p className="card__text">{facility.description}</p>
                         <div className="btn-wrapper">
                             <div className="btn green" onClick={() => alert('Show MAP!')}>
@@ -49,6 +51,12 @@ export default function StoreCard() {
                             </div>
                         </div>
                     </div>
+                   {/*} <div className="col-lg-6 card_image">
+                        <img src={`${API_URL}${facility.image}`} alt="" /> </div>*/}
+               
+             
+                    
+                
                 </div>
             </div>
         </div>
