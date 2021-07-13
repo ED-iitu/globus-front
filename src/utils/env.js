@@ -1,4 +1,4 @@
-const API_URL = "http://94.247.128.142"
+const API_URL = "http://portal.globus-almaty.kz"
 
 
 export {
