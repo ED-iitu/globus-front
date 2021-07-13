@@ -18,19 +18,19 @@ export default function Footer() {
                     </div>
                     <ul className="links">
                         <li className="links__item">
-                            <Link to="/">Преимущества</Link>
+                            <Link to="/about">Преимущества</Link>
                         </li>
                         <li className="links__item">
-                            <Link to="/">Акции и мероприятия</Link>
+                            <Link to="/promotions">Акции и мероприятия</Link>
                         </li>
                         <li className="links__item">
-                            <Link to="/">Фуд-корты</Link>
+                            <Link to="/food-cort">Фуд-корты</Link>
                         </li>
                         <li className="links__item">
                             <Link to="/">Кинотеатр</Link>
                         </li>
                         <li className="links__item">
-                            <Link to="/">Интерактивная карта</Link>
+                            <Link to="/map">Интерактивная карта</Link>
                         </li>
                     </ul>
                     <div className="info">

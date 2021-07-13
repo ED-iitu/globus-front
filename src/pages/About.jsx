@@ -33,7 +33,7 @@ export default function About() {
                         {data2.map((item, i) => (
                             <>
                                 <div className="reason">
-                                    <div className={"icon icon" + (i + 1)}></div>
+                                    <div className={"icon jcon" + (i + 1)}></div>
                                     <h3 className="title">{item.title}</h3>
                                     <p className="content">{item.description}</p>
                                 </div>
