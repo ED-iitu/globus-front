@@ -1061,9 +1061,17 @@ pre code {
   .offset-sm-11 {
     margin-left: 91.666667%;
   }
+  h1.maptitle{
+    font-size: 0.5rem;
+  }
 }
 
 @media (min-width: 768px) {
+  h1.maptitle
+{
+  font-size: 2rem;
+  color:#8ABB09;
+}
   .col-md {
     -ms-flex-preferred-size: 0;
     flex-basis: 0;
@@ -1265,6 +1273,11 @@ pre code {
 }
 
 @media (min-width: 992px) {
+  h1.maptitle
+{
+  font-size: 2rem;
+  color:#8ABB09;
+}
   .col-lg {
     -ms-flex-preferred-size: 0;
     flex-basis: 0;
@@ -1466,6 +1479,11 @@ pre code {
 }
 
 @media (min-width: 1200px) {
+  h1.maptitle
+{
+  font-size: 2rem;
+  color:#8ABB09;
+}
   .col-xl {
     -ms-flex-preferred-size: 0;
     flex-basis: 0;

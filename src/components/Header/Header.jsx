@@ -11,8 +11,10 @@ function Header({props}) {
         API.get(`/contact/info`)
             .then(res => {
                 setData(res.data?.info)
+                console.log(contacts);
             })
     }, []);
+
     const [isMenuActive, setMenu] = useState(false)
     const [menuItem, setMenuItem] = useState()
     const menu = [
@@ -74,7 +76,7 @@ function Header({props}) {
                     </div>
                     <div className="block location">
                         <div className="icon aim"></div>
-                        <p>{contacts.adress}</p>
+                        <p>{contacts.address}</p>
                     </div>
                     <div className="block time-interval">
                         <div className="icon clock"></div>

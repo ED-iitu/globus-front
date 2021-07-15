@@ -67,6 +67,10 @@ display: flex;
 
 	color: #8ABB09;
 }
+img.modal_img
+{
+    width: 125%;
+}
 h1.fontlogo
 {
 	color:#8ABB09;
@@ -99,3 +103,26 @@ path:hover
     opacity: 0.6;
     transition: 0.3s;
 }
+@media screen and (max-width: 768px) {
+
+    h1.maptitle{
+        font-size: 0.7rem;
+    }
+    h1.maptitleact{
+        font-size: 0.7rem;
+    }
+    .mapnav{
+    position: absolute;
+    width: 60%;
+    left: 45%;
+    top: 0px;
+    text-align: center;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 5px;
+    border-radius: 3px;
+}
+    img.modal_img{
+        width:100%;
+    }
+    }

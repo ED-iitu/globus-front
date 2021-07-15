@@ -19,18 +19,16 @@ import API from "../../utils/api";
 export default function Tabs(props) {
     const location = useLocation()
     const [slcTab, setTab] = useState()
-
+    console.log(props.tab)
     const [tabs, setTabs] = React.useState([])
     React.useEffect(() => {
         API.get(`/facilities/getByCategory`)
             .then(res => {
-                handleTabs(res.data?.items[0])
+                setTab(res.data?.items[props.tab])
                 setTabs(res.data?.items)
-
             })
     }, [])
-
-
+    console.log(slcTab)
     const content = {
         stores: [
             {

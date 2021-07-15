@@ -7,15 +7,17 @@ import Tabs from './../components/Tabs/Tabs'
 import "./../styles/pages/main-page.scss"
 import API from "../utils/api";
 
-export default function Main() {
+export default function Main(props) {
+    console.log(props.tab)
     return (
+        
         <div>
             <Banner />
             <div className="info">
                 <div className="info_block">
                     <h2 className="info_title">адрес</h2>
                     <div className="icon adress"></div>
-                    <p className="info_text">г. Алматы, пр. Абая, 52В <br /> уг. ул. Ауэзова</p>
+                    <p className="info_text">г. Алматы, пр. Абая, 109В <br /> уг. ул. Ауэзова</p>
                 </div>
                 <div className="info_block">
                     <h2 className="info_title">ВРЕМЯ РАБОТЫ</h2>
@@ -30,7 +32,7 @@ export default function Main() {
             </div>
             <PromoEvents />
             <Cinema />
-            <Tabs tab={[]} showTabs={true} />
+            <Tabs tab={props.tab} showTabs={true} />
 
                 <div className="inter-map">
                     <div className="container">
