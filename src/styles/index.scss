@@ -66,7 +66,10 @@ li {
     fill: yellow;
   }
 }
-
+.galimg{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
 .btn {
   flex-basis: 30%;
   display: flex;
@@ -263,6 +266,10 @@ li {
       font-weight: normal;
     }
   }
+}
+.prom_date{
+  font-size: 14px;
+      color: #818181;
 }
 
     .promocard_text{

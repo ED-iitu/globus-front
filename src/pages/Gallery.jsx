@@ -5,16 +5,18 @@ import {API_URL} from "../utils/env";
 import { useParams } from 'react-router-dom';
 import {Link} from 'react-router-dom'
 import "../components/Bread/Bread.scss"
+
+
 export default function Gallery() {
     const [data, setData] = React.useState([]);
 
     React.useEffect(() => {
-        API.get(`/promotions`)
+        API.get(`/gallery/list`)
             .then(res => {
-                setData(res.data?.promotions?.data || [])
+                setData(res.data?.data)
             })
-    }, []);
-
+    }, [])
+    console.log(data)
     return (
         <div>
             <div className="container">
@@ -25,12 +27,12 @@ export default function Gallery() {
                 <div className="row">
                     <div className="promotions">
                         {data.map((item, index) => (
-                            <Link to={`/promotions/${index}`}   className="prom">
-                                <div className="prom_poster" Style="background-color:white">
+                            <Link to={`/gallery/${item.id}`}   className="prom">
+                                <div className="prom_poster" Style="background-color:white;overflow:hidden;">
                                     <img src={API_URL+item.image} class="col-lg-12" alt="" />
                                 </div>
                                 <div className="prom_info">
-                                    <p className="prom_date">{new Date(item.created_at).toLocaleDateString()}</p>
+                                    <p className="prom_date">{new Date(item.date).toLocaleDateString()}</p>
                                     <h4 className="prom_title">{item.title}</h4>
                                 </div>
                             </Link>
@@ -38,6 +40,6 @@ export default function Gallery() {
                     </div>
                 </div>
             </div>
-        </div>
+                        </div>
     )
 }

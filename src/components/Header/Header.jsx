@@ -4,9 +4,11 @@ import Icon from "./../../assets/icon.svg"
 import "./Header.scss"
 import API from "../../utils/api";
 import { API_URL } from './../../utils/env';
+import { useLocation } from 'react-router-dom'
 function Header({props}) {
     const [contacts, setData] = React.useState([]);
-
+    const location = useLocation();
+  console.log(location.pathname);
     React.useEffect(() => {
         API.get(`/contact/info`)
             .then(res => {
@@ -14,7 +16,7 @@ function Header({props}) {
                 console.log(contacts);
             })
     }, []);
-
+    
     const [isMenuActive, setMenu] = useState(false)
     const [menuItem, setMenuItem] = useState()
     const menu = [
@@ -46,6 +48,37 @@ function Header({props}) {
         },{
             title: "ФОТОГАЛЕРЕЯ",
             url: '/gallery'
+        }
+    ]
+    const menu_en = [
+        {
+            title: "Main page",
+            url: '/en/',
+        },{
+            title: "About Us",
+            url: '/en/about',
+        },{
+            title: "Map",
+            type: 'absolute',
+            url: '/en/map',
+        },{
+            title: "Boutiques",
+            url: '/en/store',
+        },{
+            title: "Promo",
+            url: '/en/promotions',
+        },{
+            title: "Food Courts",
+            url: '/en/food-cort',
+        },{
+            title: "For Tenants",
+            url: '/en/tenants'
+        },{
+            title: "Contact Us",
+            url: '/en/contacts'
+        },{
+            title: "Gallery",
+            url: '/en/gallery'
         }
     ]
     useEffect(() => {

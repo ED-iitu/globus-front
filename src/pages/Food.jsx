@@ -4,7 +4,7 @@ import Bread from '../components/Bread/Bread'
 import API from '../utils/api';
 
 export default function Store(props) {
-    
+    console.log(props.lang)
     return (
         <div>
             

@@ -3,13 +3,13 @@ import "./../styles/pages/about-page.scss"
 import poster from './../assets/about-page.png'
 import API from './../utils/api';
 
-export default function About() {
+export default function About(props) {
     const [data, setData] = React.useState([])
     const [data2, setInfo] = React.useState([])
 
 
     React.useEffect(() => {
-        API.get(`/about/info`)
+        API.get(`${props.lang}/about/info`)
             .then(res => {
                 setData(res.data?.about)
                 setInfo(res.data?.infographics)

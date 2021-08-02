@@ -2,8 +2,17 @@ import React from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import "./Cinema.scss"
-
+import kino from "../../utils/kino";
 export default function Cinema() {
+    const [cinemas, setData] = React.useState([]);
+    React.useEffect(() => {
+        kino.get(`sessions?cinemaId=119&date=2021-08-02`)
+            .then(res => {
+                setData(res.data)
+                
+            })
+    }, []);
+    console.log(cinemas)
     
     const responsive = {
           desktop: {

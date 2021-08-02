@@ -14,6 +14,7 @@ import StoreCard from "./pages/StoreCard";
 import Tenants from "./pages/Tenants";
 import Contacts from "./pages/Contacts";
 import Gallery from "./pages/Gallery";
+import GalleryCard from "./pages/GalleryCard";
 import Food from "./pages/Food"
 import PromotionsCard from "./pages/PromotionsCard";
 import Header from "./components/Header/Header";
@@ -57,8 +58,47 @@ function App() {
             <Route exact path="/gallery">
               <Gallery />
             </Route>
+            <Route exact path="/gallery/:ids">
+              <GalleryCard />
+            </Route>
             <Route exact path="/store/:slug">
               <StoreCard />
+            </Route>
+            <Route exact path="/en">
+              <Main tab={0} lang={"en"} />
+            </Route>
+            <Route exact path="en/about">
+              <About lang={"en"} />
+            </Route>
+            <Route exact path="en/map">
+              <Map lang={"en"} />
+            </Route>
+            <Route exact path="en/store">
+              <Store tab={2} lang={"en"} />
+            </Route>
+            <Route exact path="en/promotions">
+              <Promotions lang={"en"} />
+            </Route>
+            <Route exact path="en/promotions/:id">
+              <PromotionsCard lang={"en"} />
+            </Route>
+            <Route exact path="en/food-cort">
+              <Food tab={1} lang={"en"} />
+            </Route>
+            <Route exact path="en/tenants">
+              <Tenants lang={"en"}/>
+            </Route>
+            <Route exact path="en/contacts">
+              <Contacts lang={"en"}/>
+            </Route>
+            <Route exact path="en/gallery">
+              <Gallery lang={"en"}/>
+            </Route>
+            <Route exact path="en/gallery/:ids">
+              <GalleryCard lang={"en"}/>
+            </Route>
+            <Route exact path="en/store/:slug">
+              <StoreCard lang={"en"}/>
             </Route>
           </Switch>
         </div>
