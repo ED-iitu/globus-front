@@ -9,13 +9,13 @@ export default function About(props) {
 
 
     React.useEffect(() => {
-        API.get(`${props.lang}/about/info`)
+        API.get(`/about/info`)
             .then(res => {
                 setData(res.data?.about)
                 setInfo(res.data?.infographics)
             })
     }, [])
-
+        console.log(data2)
     return (
         <div>
             <div className="page-poster">

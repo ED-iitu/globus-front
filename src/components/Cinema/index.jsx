@@ -3,10 +3,24 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import "./Cinema.scss"
 import kino from "../../utils/kino";
+import axios from 'axios';
 export default function Cinema() {
     const [cinemas, setData] = React.useState([]);
+    var config = {
+        headers: {'authority': 'kino.kz',
+        'pragma' : 'no-cache' ,
+        'cache-control': 'no-cache',
+        'accept': '*/*' ,
+        'sec-fetch-site': 'same-origin' ,
+        'sec-fetch-mode': 'cors' ,
+        'sec-fetch-dest': 'empty' ,
+        'referer': 'https://kino.kz/cinemas' ,
+        'accept-language': 'en-US,en;q=0.9' 
+        //'cookie: _ga=GA1.2.263691977.1627916051; _gid=GA1.2.1232347940.1627916051; _ym_uid=1627916051462045989; _ym_d=1627916051; _ym_isad=2; __gads=ID=9b828edcf72432b6-22d5459a92c800d7:T=1627916052:S=ALNI_MYhZpdxoyfMmRFqkXB_ko3mKaThTg'
+    }
+    };
     React.useEffect(() => {
-        kino.get(`sessions?cinemaId=119&date=2021-08-02`)
+       axios.get(`https://kino.kz/api/cinema/sessions?cinemaId=119&date=2021-08-02`,config)
             .then(res => {
                 setData(res.data)
                 
