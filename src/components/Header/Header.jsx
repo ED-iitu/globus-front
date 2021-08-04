@@ -105,7 +105,7 @@ function Header({props}) {
                     <div className="social">
                         <a href="https://www.facebook.com/pages/category/Shopping-Mall/%D0%A2%D0%A0%D0%A6-Globus-907269146129668/" className="social__icon fb"></a>
                         <a href="https://www.instagram.com/globus_trc/?hl=ru" className="social__icon ins"></a>
-                        <a href="#" className="social__icon vk"></a>
+                       {/* <a href="#" className="social__icon vk"></a>*/}
                     </div>
                     <div className="block location">
                         <div className="icon aim"></div>

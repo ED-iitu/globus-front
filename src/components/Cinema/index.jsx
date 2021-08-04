@@ -48,20 +48,20 @@ export default function Cinema() {
     }, [])
 
     const list = [{
-            title:"Сумерки. Сага. Часть 1",
-            poster: "https://english-films.online/uploads/posts/2019-09/1567422847_iphone360_401177.jpg"
+            title:"Тайна Сен-Тропе",
+            poster: "https://cdn.kino.kz/movies/Myst_re___Saint-Tropez/p599x300.jpg"
         },{
-            title:"Сумерки. Сага. Часть 2",
-            poster: "https://english-films.online/uploads/posts/2019-09/1567422847_iphone360_401177.jpg"
+            title:"Круиз по Джунглям",
+            poster: "https://cdn.kino.kz/movies/Jungle_Cruise/p599x300.jpg"
         },{
-            title:"Сумерки. Сага. Часть 3",
-            poster: "https://english-films.online/uploads/posts/2019-09/1567422847_iphone360_401177.jpg"
+            title:"Космический джем",
+            poster: "https://cdn.kino.kz/movies/Space_Jam__A_New_Legacy/p599x300.jpg"
         },{
-            title:"Сумерки. Сага. Часть 4",
-            poster: "https://english-films.online/uploads/posts/2019-09/1567422847_iphone360_401177.jpg"
+            title:"Чёрная вдова",
+            poster: "https://cdn.kino.kz/movies/Black_Widow/p599x300.jpg"
         },{
-            title:"Сумерки. Сага. Часть 5",
-            poster: "https://english-films.online/uploads/posts/2019-09/1567422847_iphone360_401177.jpg"
+            title:"Проклятье пиковой дамы",
+            poster: "https://cdn.kino.kz/movies/Queen_of_Spades/p599x300.jpg"
     },]
     return (
         <div className="cinema">
@@ -78,7 +78,7 @@ export default function Cinema() {
                                     <div className="bg" style={{backgroundImage: `url(${item.poster})`}}></div>
                                     <div className="info-block">
                                         <p className="title">{item.title}</p>
-                                        <button className="btn">Смотреть расписание</button>
+                                        <a href="https://kino.kz/cinema/82" className="btn">Смотреть расписание</a>
                                     </div>
                                 </div>
                             </div>

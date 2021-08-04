@@ -24,7 +24,7 @@ export default function Promotions() {
                     <div className="promotions">
                         {data.map((item, index) => (
                             <Link to={`/promotions/${index}`}   className="prom">
-                                <div className="prom_poster" Style="background-color:white">
+                                <div className="prom_poster container" Style="background-color:white">
                                     <img src={API_URL+item.image} class="col-lg-12" alt="" />
                                 </div>
                                 <div className="prom_info">

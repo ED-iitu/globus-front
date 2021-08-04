@@ -155,6 +155,20 @@ li {
     font-size: 18px;
     padding: 9px 25px;
     }
+    
+  }
+  textarea {
+    width: 100%;
+    border: 1px solid #bbb;
+    font-size: 24px;
+    padding: 20px 30px;
+    outline: unset;
+    margin-top: 10px;
+    @media screen and (max-width: 768px) {
+    font-size: 18px;
+    padding: 9px 25px;
+    }
+    
   }
   .submit-btn {
     font-size: 20px;
@@ -297,7 +311,7 @@ li {
     width: 60%;
     height: 700px;
     background: #fff;
-    padding: 80px 100px;
+    padding: 40px 100px 80px 100px;
     position: relative;
     @media screen and (max-width: 768px) {
         
@@ -345,7 +359,7 @@ li {
   }
   &-info {
     display: flex;
-    margin: 40px 0;
+    margin: 20px 0;
     font-size: 24px;
     color: #6B9206;
     @media screen and (max-width: 768px) {

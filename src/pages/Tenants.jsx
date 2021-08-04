@@ -31,7 +31,10 @@ export default function Tenants() {
                     <input type="text" placeholder="Ваше имя"/> <br />
                     <input type="text" placeholder="Номер телефона"/> <br />
                     <input type="text" placeholder="Ваша почта"/> <br />
-                    <button className="submit-btn">Отправить</button>
+                    <div Style="max-height:150px;"className="col-lg-12">
+                    <button className="submit-btn">Прикрепить файл</button>
+                    <button Style="float:right" className="submit-btn">Отправить</button>
+                    </div>
                     <div className="tenants-bg"></div>
                 </form>
             </div>

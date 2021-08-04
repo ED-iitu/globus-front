@@ -46,7 +46,7 @@ export default function Footer() {
                         <div className="social">
                         <a href="https://www.facebook.com/pages/category/Shopping-Mall/%D0%A2%D0%A0%D0%A6-Globus-907269146129668/" className="social__item fb"></a>
                         <a href="https://www.instagram.com/globus_trc/?hl=ru" className="social__item ins"></a>
-                            <a href="" className="social__item vk"></a>
+                           {/* <a href="" className="social__item vk"></a> */}
                         </div>
                         <div className="tel">
                             <img src={Icon} alt="" />

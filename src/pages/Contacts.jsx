@@ -28,8 +28,8 @@ export default function Contacts() {
                     <form className="form-contacts">
                         <input type="text" placeholder="Ваше имя"/> <br />
                         <input type="text" placeholder="Номер телефона"/> <br />
-                        <input type="text" placeholder="Ваша почта"/> <br />
-                        <button className="submit-btn">Отправить</button>
+                        <textarea placeholder="Ваше сообщение"></textarea> <br />
+                        <button  className="submit-btn">Отправить</button>
                         {/* <div className="tenants-bg"></div> */}
                     </form>
                 </div>

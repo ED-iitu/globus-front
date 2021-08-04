@@ -26,7 +26,7 @@
 }
 
 .about-page-heading {
-    margin-top: 110px;
+    margin-top: 60px;
     margin-bottom: 100px;
     justify-content: space-between;
     align-items: flex-end;
@@ -82,7 +82,7 @@
         .content {
             color: #7E8474;
             padding-right: 15px;
-            font-size: 23px;
+            font-size: 17px;
             line-height: 31.03px;
         }
         .icon {
@@ -137,7 +137,7 @@
     font-weight: bold;
     text-transform: uppercase;
     color: #7E8474;
-    margin: 60px 0;
+    margin: 0 0 30px 0;
     span {
         color: #8ABB09;
     }
@@ -152,7 +152,7 @@
     color: #878787;
     font-size: 26px;
     line-height: 29px;
-    margin: 30px 0;
+    margin: 15px 0;
     text-transform: uppercase;
     @media screen and (max-width: 768px) {
         margin: 30px;
@@ -160,7 +160,7 @@
     }
 }
 .text {
-    font-size: 24px;
+    font-size: 21px;
     line-height: 26px;
     color: #878787;
     margin-bottom: 30px;
