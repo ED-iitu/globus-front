@@ -96,7 +96,7 @@
 				</a>
 				</div>
 			</div>
-			<img src="images/2floor.jpg" alt="карта первого этажа" style="width: 100%;">
+			<img :src="server+image.image" alt="карта первого этажа" style="width: 100%;">
 		</div>
 
 
@@ -120,7 +120,8 @@
   el: '#app',
   data: {
     infos: [],
-	server: "http://portal.globus-almaty.kz"
+	server: "http://portal.globus-almaty.kz",
+	image: ""
   },
   mounted() {
     axios
@@ -129,8 +130,14 @@
 		this.infos.forEach(info => {
 			console.log(info.name+info.d);
 		});
+
+	}),
+    axios
+    .get('http://portal.globus-almaty.kz/api/v1/maps?floor=2')
+      .then(response => {this.image = response.data.maps[0]
+      	console.log(this.image.image)
+
 	});
-	  
   }
 })
 </script>

@@ -11,7 +11,7 @@
 
 	<div id="app">
 	<div class="map">
-		<svg viewBox="0 0 1121 644">
+		<svg viewBox="0 0 1121 655" >
 		<a v-for="info in infos" type="button" class="btn btn-primary" data-toggle="modal" v-bind:data-target="'#'+info.id">
 			<path v-bind:d="info.d" stroke-width="2" stroke="black" />
 		</a>
@@ -92,7 +92,7 @@
 				</a>
 				</div>
 			</div>
-			<img src="images/1floor.jpg" style="width: 100%" alt="карта первого этажа">
+			<img :src="server+image.image" style="width: 100%" alt="карта первого этажа">
 		</div>
 
 
@@ -116,7 +116,8 @@
   el: '#app',
   data: {
     infos: [],
-	server: "http://portal.globus-almaty.kz"
+	server: "http://portal.globus-almaty.kz",
+	image: ""
   },
   mounted() {
     axios
@@ -125,7 +126,13 @@
 		this.infos.forEach(info => {
 			console.log(info.name+info.d);
 		});
-	});
+	}),
+    axios
+    .get('http://portal.globus-almaty.kz/api/v1/maps?floor=1')
+      .then(response => {this.image = response.data.maps[0]
+      	console.log(this.image.image)
+
+	})
 	  
   }
 })

@@ -5,14 +5,18 @@ import API from './../utils/api';
 
 export default function Store(props) {
 
+    console.log(props.tab)
+    console.log(props.lang)
     return (
         <div>
             
             <div className="container">
-                <Bread />
-                <h1 className="Page_heading">Магазины</h1>
+            <Bread lang={props.lang}/>
+                {props.lang==="ru"&&<h1 className="Page_heading">Магазины</h1>}
+                {props.lang==="en"&&<h1 className="Page_heading">Shops</h1>}
+                {props.lang==="kz"&&<h1 className="Page_heading">Дүкендер</h1>}
             </div>
-            <Tabs tab={props.tab} showTabs={false} />
+            <Tabs tab={props.tab} showTabs={false} lang={props.lang} />
             
         </div>
     )

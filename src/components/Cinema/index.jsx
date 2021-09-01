@@ -4,30 +4,20 @@ import 'react-multi-carousel/lib/styles.css';
 import "./Cinema.scss"
 import kino from "../../utils/kino";
 import axios from 'axios';
-export default function Cinema() {
+import API from "../../utils/api";
+export default function Cinema(props) {
     const [cinemas, setData] = React.useState([]);
-    var config = {
-        headers: {'authority': 'kino.kz',
-        'pragma' : 'no-cache' ,
-        'cache-control': 'no-cache',
-        'accept': '*/*' ,
-        'sec-fetch-site': 'same-origin' ,
-        'sec-fetch-mode': 'cors' ,
-        'sec-fetch-dest': 'empty' ,
-        'referer': 'https://kino.kz/cinemas' ,
-        'accept-language': 'en-US,en;q=0.9' 
-        //'cookie: _ga=GA1.2.263691977.1627916051; _gid=GA1.2.1232347940.1627916051; _ym_uid=1627916051462045989; _ym_d=1627916051; _ym_isad=2; __gads=ID=9b828edcf72432b6-22d5459a92c800d7:T=1627916052:S=ALNI_MYhZpdxoyfMmRFqkXB_ko3mKaThTg'
-    }
-    };
+    const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzcC5raW5vcGFyayIsInN1YiI6Imdsb2J1cy5wcm9kIiwibmFtZSI6ImFmaXNoYS50ZXN0In0.vOHcPMJqiKrAo95PFyfv3LF3lvwaZqmfaGmKSmC7rvI";
+
     React.useEffect(() => {
-       axios.get(`https://kino.kz/api/cinema/sessions?cinemaId=119&date=2021-08-02`,config)
+        axios.get(`https://afisha.api.kinopark.kz/api/movie/today?date_from=&date_to=&sort=seance.start_time&cinema=03edce61-39b8-427c-9aa8-48296a37f227&dial_timeout=5s&request_timeout=5s&retries=0`,
+        {headers: {
+            'Authorization': `Bearer ${token}`
+          }})
             .then(res => {
-                setData(res.data)
-                
+                setData(res.data?.data)
             })
     }, []);
-    console.log(cinemas)
-    
     const responsive = {
           desktop: {
             breakpoint: { max: 3000, min: 1024 },
@@ -65,19 +55,19 @@ export default function Cinema() {
     },]
     return (
         <div className="cinema">
-            <div className="container">
+           {props.lang==="ru"&& <div className="container">
                 <div className="row">
                     <h1 className="heading">кинотеатр kinopark 4</h1>
 
                 </div>
                 <div className="carousel-wrapper">
                     <Carousel responsive={responsive} itemClass="block">
-                        {list.map((item, i) => (
+                        {cinemas.map((item, i) => (
                             <div key={i}>
                                 <div className="cinema__block">
-                                    <div className="bg" style={{backgroundImage: `url(${item.poster})`}}></div>
+                                    <div className="bg" style={{backgroundImage: `url(${item.images.vertical})`}}></div>
                                     <div className="info-block">
-                                        <p className="title">{item.title}</p>
+                                        <p className="title">{item.name}</p>
                                         <a href="https://kino.kz/cinema/82" className="btn">Смотреть расписание</a>
                                     </div>
                                 </div>
@@ -85,7 +75,49 @@ export default function Cinema() {
                         ))}
                     </Carousel>
                 </div>
-            </div>
+            </div>}
+            {props.lang==="en"&& <div className="container">
+                <div className="row">
+                    <h1 className="heading">Cinema kinopark 4</h1>
+
+                </div>
+                <div className="carousel-wrapper">
+                    <Carousel responsive={responsive} itemClass="block">
+                        {cinemas.map((item, i) => (
+                            <div key={i}>
+                                <div className="cinema__block">
+                                    <div className="bg" style={{backgroundImage: `url(${item.images.vertical})`}}></div>
+                                    <div className="info-block">
+                                        <p className="title">{item.name}</p>
+                                        <a href="https://kino.kz/cinema/82" className="btn">Watch the schedule</a>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </Carousel>
+                </div>
+            </div>}
+            {props.lang==="kz"&& <div className="container">
+                <div className="row">
+                    <h1 className="heading">кинотеатр kinopark 4</h1>
+
+                </div>
+                <div className="carousel-wrapper">
+                    <Carousel responsive={responsive} itemClass="block">
+                        {cinemas.map((item, i) => (
+                            <div key={i}>
+                                <div className="cinema__block">
+                                    <div className="bg" style={{backgroundImage: `url(${item.images.vertical})`}}></div>
+                                    <div className="info-block">
+                                        <p className="title">{item.name}</p>
+                                        <a href="https://kino.kz/cinema/82" className="btn">Кестені қараңыз</a>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </Carousel>
+                </div>
+            </div>}
         </div>
     )
 }

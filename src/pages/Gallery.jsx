@@ -7,11 +7,11 @@ import {Link} from 'react-router-dom'
 import "../components/Bread/Bread.scss"
 
 
-export default function Gallery() {
+export default function Gallery(props) {
     const [data, setData] = React.useState([]);
 
     React.useEffect(() => {
-        API.get(`/gallery/list`)
+        API.get(`/gallery/list?lang`)
             .then(res => {
                 setData(res.data?.data)
             })
@@ -21,9 +21,9 @@ export default function Gallery() {
         <div>
             <div className="container">
 
-                <Bread />
-                <h1 className="Page_heading">Галерея</h1>
-
+                <Bread lang={props.lang}/>
+                {props.lang!=="en"&&<h1 className="Page_heading">Галерея</h1>}
+                {props.lang==="en"&&<h1 className="Page_heading">Gallery</h1>}
                 <div className="row">
                     <div className="promotions">
                         {data.map((item, index) => (

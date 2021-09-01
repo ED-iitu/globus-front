@@ -3,10 +3,20 @@ import {Link} from 'react-router-dom'
 import Icon from "./../../assets/footer-tel.svg"
 import "./Footer.scss"
 import API from "../../utils/api";
-export default function Footer() {
+export default function Footer(props) {
     const [contacts, setData] = React.useState([]);
+    const [currentLang,setLang]=React.useState(props.lang)
+    if(props.lang!=currentLang)
+    {
+        setLang(props.lang)
+        API.get(`/contact/info?lang=${props.lang}`)
+            .then(res => {
+                setData(res.data?.info)
+                
+            })
+    }
     React.useEffect(() => {
-        API.get(`/contact/info`)
+        API.get(`/contact/info?lang=${props.lang}`)
             .then(res => {
                 setData(res.data?.info)
                 
@@ -23,25 +33,59 @@ export default function Footer() {
                 <div className="footer__content">
                     <div className="mob-tel">
                         <img src={Icon} alt="" />
-                        <p>+7 727 356 15 15</p>
+                        <p>{contacts.phone}</p>
                     </div>
-                    <ul className="links">
+                    {props.lang ==="ru" &&<ul className="links">
                         <li className="links__item">
-                            <Link to="/about">Преимущества</Link>
+                            <Link to="/ru/about">Преимущества</Link>
                         </li>
                         <li className="links__item">
-                            <Link to="/promotions">Акции и мероприятия</Link>
+                            <Link to="/ru/promotions">Акции и мероприятия</Link>
                         </li>
                         <li className="links__item">
-                            <Link to="/food-cort">Фуд-корты</Link>
+                            <Link to="/ru/food-cort">Фуд-корты</Link>
                         </li>
                         <li className="links__item">
-                            <Link to="/">Кинотеатр</Link>
+                            <Link to="/ru#cinema">Кинотеатр</Link>
                         </li>
                         <li className="links__item">
                             <Link to="/map">Интерактивная карта</Link>
                         </li>
-                    </ul>
+                    </ul>}
+                    {props.lang ==="en" &&<ul className="links">
+                        <li className="links__item">
+                            <Link to="/en/about">Feauters</Link>
+                        </li>
+                        <li className="links__item">
+                            <Link to="/en/promotions">Promo and Events</Link>
+                        </li>
+                        <li className="links__item">
+                            <Link to="/en/food-cort">Food Courts</Link>
+                        </li>
+                        <li className="links__item">
+                            <Link to="/en#cinema">Cinema</Link>
+                        </li>
+                        <li className="links__item">
+                            <Link to="/map">Interactive map</Link>
+                        </li>
+                    </ul>}
+                    {props.lang ==="kz" &&<ul className="links">
+                        <li className="links__item">
+                            <Link to="/kz/about">Ерекшеліктер</Link>
+                        </li>
+                        <li className="links__item">
+                            <Link to="/kz/promotions">Шаралар</Link>
+                        </li>
+                        <li className="links__item">
+                            <Link to="/kz/food-cort">Мейрамханалар</Link>
+                        </li>
+                        <li className="links__item">
+                            <Link to="/kz#cinema">Кинотеатр</Link>
+                        </li>
+                        <li className="links__item">
+                            <Link to="/map">Карта</Link>
+                        </li>
+                    </ul>}
                     <div className="info">
                         <div className="social">
                         <a href="https://www.facebook.com/pages/category/Shopping-Mall/%D0%A2%D0%A0%D0%A6-Globus-907269146129668/" className="social__item fb"></a>
@@ -53,10 +97,13 @@ export default function Footer() {
                             <p>{contacts.phone}</p>
                         </div>
                         <div className="info-block">
-                            <p>050000, Казахстан <br /> Алматы, {contacts.address}</p>
+                            {props.lang !=="en"&&<p>050000, Казахстан <br /> Алматы, {contacts.address}</p>}
+                            {props.lang ==="en"&&<p>050000, Kazakhstan <br /> Almaty, {contacts.address}</p>}
                         </div>
                         <div className="info-block">
-                            <p>2021, Globus <br /> Все права защищены</p>
+                        {props.lang ==="ru"&& <p>2021, Globus <br /> Все права защищены</p>}
+                        {props.lang ==="en"&& <p>2021, Globus <br /> All rights reserved</p>}
+                        {props.lang ==="kz"&& <p>2021, Globus <br /> Барлық құқықтар сақталған</p>}
                         </div>
                     </div>
                 </div>

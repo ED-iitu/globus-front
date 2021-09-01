@@ -14,13 +14,3 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-let strArr = []
-window.addEventListener('keypress', (e) => {
-  strArr.push(e.key)
-  if(strArr.length > 7) {
-    strArr.splice(0,1)
-  }
-  if(strArr.join("") === "alisher") {
-    alert("frontend developer: Alisher MELDEBEK")
-  }
-})

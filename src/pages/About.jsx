@@ -6,26 +6,42 @@ import API from './../utils/api';
 export default function About(props) {
     const [data, setData] = React.useState([])
     const [data2, setInfo] = React.useState([])
-
-
+    const [currentLang,setLang]=React.useState(props.lang)
+   // console.log(props.lang)
+    //console.log(currentLang)
+    if(props.lang!=currentLang)
+    {
+        setLang(props.lang)
+            API.get(`/about/info?lang=${props.lang}`)
+                .then(res => {
+                    setData(res.data?.about)
+                    setInfo(res.data?.infographics)
+                })
+        
+    }
     React.useEffect(() => {
-        API.get(`/about/info`)
+        API.get(`/about/info?lang=${currentLang}`)
             .then(res => {
                 setData(res.data?.about)
                 setInfo(res.data?.infographics)
             })
     }, [])
-        console.log(data2)
     return (
         <div>
             <div className="page-poster">
                 <img src={poster} alt="" />
             </div>
             <div className="container ">
-                <div className="row about-page-heading">
-                    <h1 className="heading"><span>6</span> причин <br /> почему <span>globus</span></h1>
-                    <a className="more-link" href="#">подробнее о globus</a>
-                </div>
+                
+                { props.lang==="ru" && 
+                    <div className="row about-page-heading"> <h1 className="heading"><span>6</span> причин <br /> почему <span>globus</span></h1>
+                    <a className="more-link" href="#">подробнее о globus</a> </div>}  
+                { props.lang==="kz" && 
+                    <div className="row about-page-heading"> <h1 className="heading"><span>Globus </span> таңдауымыздың <br /><span> 6 </span>себебі</h1>
+                    <a className="more-link" href="#">globus туралы толығрақ</a> </div>}  
+                { props.lang==="en" &&  
+                    <div className="row about-page-heading"> <h1 className="heading"><span>6</span> reasons <br /> why <span>globus</span></h1>
+                    <a className="more-link" href="#">read more about globus</a> </div>}   
             </div>
             <div className="container">
                 <div className="row">
@@ -73,10 +89,24 @@ export default function About(props) {
                 </div>
 
                 <div className="row">
+                { props.lang==="ru" &&  
+                    <div>
                     <h2 className="main-title">несколько слов <br /> <span>о globus</span></h2>
 
                     <p className="text">Открытый в 2010 г., современный торгово-развлекательный комплекс Globus быстро завоевал симпатии жителей города и стал одним среди самых популярных торговых центров Алматы. Этот престижный центр отличается очень удобным месторасположением, прекрасной архитектурой, интересными дизайнерскими решениями и высочайшим уровнем сервиса. </p>
-                    
+                    </div>}
+                    { props.lang==="kz" &&  
+                    <div>
+                    <h2 className="main-title"> <span>globus</span> туралы</h2>
+
+                    <p className="text">2010 жылы ашылған заманауи Globus сауда ойын -сауық кешені тез арада қала тұрғындарының көзайымына айналды және Алматыдағы ең танымал сауда орталықтарының біріне айналды. Бұл беделді орталық өте ыңғайлы орналасуымен, тамаша архитектурасымен, қызықты дизайн шешімдерімен және қызмет көрсетудің жоғары деңгейімен ерекшеленеді. </p>
+                    </div>}
+                    { props.lang==="en" &&  
+                    <div>
+                    <h2 className="main-title">About <span>globus</span></h2>
+
+                    <p className="text">Opened in 2010, the modern shopping and entertainment complex Globus quickly won the sympathy of the city residents and became one of the most popular shopping centers in Almaty. This prestigious center is distinguished by a very convenient location, excellent architecture, interesting design solutions and the highest level of service. </p>
+                    </div>}
                     {data.map((item, i) => (
                         <>
                             <h3 className="sub-title">

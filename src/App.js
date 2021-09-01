@@ -2,7 +2,8 @@ import React, {useEffect, useState} from "react";
 import {
   Switch,
   Route,
-  useLocation
+  useLocation,
+  Redirect
 } from "react-router-dom";
 
 import Main from "./pages/Main";
@@ -25,84 +26,132 @@ function App() {
 
   return (
       <div className="App">
-        <Header />
+        <Header  lang={"ru"}/>
         <div className="Page">
           <Switch>
-            <Route exact path="/">
-              <Main tab={0} />
+          <Route exact path="/" render={() => (
+    <Redirect to="/ru/"/>
+)}/>
+          <Route exact path="/ru/">
+              <Main tab={0} lang={"ru"} />
             </Route>
-            <Route exact path="/about">
-              <About />
+            <Route exact path="/ru/about">
+              <About lang={"ru"} />
+            </Route>
+            <Route exact path="/ru/map">
+              <Map lang={"ru"} />
+            </Route>
+            <Route exact path="/ru/store">
+              <Store tab={2} lang={"ru"} />
+            </Route>
+            <Route exact path="/ru/promotions">
+              <Promotions lang={"ru"} />
+            </Route>
+            <Route exact path="/ru/promotions/:id">
+              <PromotionsCard lang={"ru"} />
+            </Route>
+            <Route exact path="/ru/food-cort">
+              <Food tab={1} lang={"ru"} />
+            </Route>
+            <Route exact path="/ru/tenants">
+              <Tenants lang={"ru"}/>
+            </Route>
+            <Route exact path="/ru/contacts">
+              <Contacts lang={"ru"}/>
+            </Route>
+            <Route exact path="/ru/gallery">
+              <Gallery lang={"ru"}/>
+            </Route>
+            <Route exact path="/ru/gallery/:ids">
+              <GalleryCard lang={"ru"}/>
+            </Route>
+            <Route exact path="/ru/store/:slug">
+              <StoreCard lang={"ru"}/>
+            </Route>
+            <Route exact path="/en/">
+              <Main tab={0} lang={"en"} />
+            </Route>
+            <Route exact path="/en/about">
+              <About lang={"en"} />
             </Route>
             <Route exact path="/map">
               <Map />
             </Route>
-            <Route exact path="/store">
-              <Store tab={2} />
-            </Route>
-            <Route exact path="/promotions">
-              <Promotions />
-            </Route>
-            <Route exact path="/promotions/:id">
-              <PromotionsCard />
-            </Route>
-            <Route exact path="/food-cort">
-              <Food tab={1} />
-            </Route>
-            <Route exact path="/tenants">
-              <Tenants />
-            </Route>
-            <Route exact path="/contacts">
-              <Contacts />
-            </Route>
-            <Route exact path="/gallery">
-              <Gallery />
-            </Route>
-            <Route exact path="/gallery/:ids">
-              <GalleryCard />
-            </Route>
-            <Route exact path="/store/:slug">
-              <StoreCard />
-            </Route>
-            <Route exact path="/en">
-              <Main tab={0} lang={"en"} />
-            </Route>
-            <Route exact path="en/about">
-              <About lang={"en"} />
-            </Route>
-            <Route exact path="en/map">
-              <Map lang={"en"} />
-            </Route>
-            <Route exact path="en/store">
+            <Route exact path="/en/store">
               <Store tab={2} lang={"en"} />
             </Route>
-            <Route exact path="en/promotions">
+            <Route exact path="/en/promotions">
               <Promotions lang={"en"} />
             </Route>
-            <Route exact path="en/promotions/:id">
+            <Route exact path="/en/promotions/:id">
               <PromotionsCard lang={"en"} />
             </Route>
-            <Route exact path="en/food-cort">
+            <Route exact path="/en/food-cort">
               <Food tab={1} lang={"en"} />
             </Route>
-            <Route exact path="en/tenants">
+            <Route exact path="/en/tenants">
               <Tenants lang={"en"}/>
             </Route>
-            <Route exact path="en/contacts">
+            <Route exact path="/en/contacts">
               <Contacts lang={"en"}/>
             </Route>
-            <Route exact path="en/gallery">
+            <Route exact path="/en/gallery">
               <Gallery lang={"en"}/>
             </Route>
-            <Route exact path="en/gallery/:ids">
+            <Route exact path="/en/gallery/:ids">
               <GalleryCard lang={"en"}/>
             </Route>
-            <Route exact path="en/store/:slug">
+            <Route exact path="/en/store/:slug">
               <StoreCard lang={"en"}/>
+            </Route>
+            <Route exact path="/kz/">
+              <Main tab={0} lang={"kz"} />
+            </Route>
+            <Route exact path="/kz/about">
+              <About lang={"kz"} />
+            </Route>
+            <Route exact path="/kz/map">
+              <Map lang={"kz"} />
+            </Route>
+            <Route exact path="/kz/store">
+              <Store tab={2} lang={"kz"} />
+            </Route>
+            <Route exact path="/kz/promotions">
+              <Promotions lang={"kz"} />
+            </Route>
+            <Route exact path="/kz/promotions/:id">
+              <PromotionsCard lang={"kz"} />
+            </Route>
+            <Route exact path="/kz/food-cort">
+              <Food tab={1} lang={"kz"} />
+            </Route>
+            <Route exact path="/kz/tenants">
+              <Tenants lang={"kz"}/>
+            </Route>
+            <Route exact path="/kz/contacts">
+              <Contacts lang={"kz"}/>
+            </Route>
+            <Route exact path="/kz/gallery">
+              <Gallery lang={"kz"}/>
+            </Route>
+            <Route exact path="/kz/gallery/:ids">
+              <GalleryCard lang={"kz"}/>
+            </Route>
+            <Route exact path="/kz/store/:slug">
+              <StoreCard lang={"kz"}/>
             </Route>
           </Switch>
         </div>
-        {location.pathname !== "/contacts" && <Footer />}
+                {(() => {
+          if (location.pathname.split(/\//)[2] != "contacts") {
+            if(location.pathname.split(/\//)[1]=="ru")
+            return <Footer lang={"ru"} />;
+            if(location.pathname.split(/\//)[1]=="en")
+            return <Footer lang={"en"} />;
+            if(location.pathname.split(/\//)[1]=="kz")
+            return <Footer lang={"kz"} />;
+          }
+        })()}
       </div>
   );
 }

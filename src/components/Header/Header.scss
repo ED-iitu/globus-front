@@ -80,9 +80,11 @@
     margin-left: 30px;
     line-height: 44px;
     margin-right: 40px;
-    &__item {
-      padding: 0 14px;
+    &__item  {
+      span{
+      padding: 14px 14px;
       border-right: 1px solid #BFD6BD;
+      }
       &.active {
         color: #65A45F;
       }

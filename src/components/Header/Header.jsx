@@ -8,46 +8,90 @@ import { useLocation } from 'react-router-dom'
 function Header({props}) {
     const [contacts, setData] = React.useState([]);
     const location = useLocation();
-  console.log(location.pathname);
+    const [currentLang, setcurrentlang] = useState(location.pathname.split(/\//)[1])
+    const [loc,setlocation]= useState('/'+location.pathname.split(/\//)[2]);
+    console.log(location.pathname.split(/\//)[1])
+    console.log(location.pathname.split(/\//)[2])
+  var CurrentLang="ru";
+    console.log(loc)
+    if(currentLang=="")
+    {
+       setcurrentlang("ru")
+    }
+    if(loc=="/undefined")
+    {
+        setlocation("/")
+    }
     React.useEffect(() => {
-        API.get(`/contact/info`)
+        API.get(`/contact/info?lang=${currentLang}`)
             .then(res => {
                 setData(res.data?.info)
-                console.log(contacts);
+               // console.log(contacts);
             })
     }, []);
-    
+    console.log(currentLang)
     const [isMenuActive, setMenu] = useState(false)
     const [menuItem, setMenuItem] = useState()
     const menu = [
         {
             title: "ГЛАВНАЯ",
-            url: '/',
+            url: '/ru/',
         },{
             title: "О НАС",
-            url: '/about',
+            url: '/ru/about',
         },{
             title: "КАРТА ТРЦ",
             type: 'absolute',
             url: '/map',
         },{
             title: "МАГАЗИНЫ",
-            url: '/store',
+            url: '/ru/store',
         },{
             title: "АКЦИИ",
-            url: '/promotions',
+            url: '/ru/promotions',
         },{
             title: "ФУД-КОРТЫ",
-            url: '/food-cort',
+            url: '/ru/food-cort',
         },{
             title: "АРЕНДАТОРАМ",
-            url: '/tenants'
+            url: '/ru/tenants'
         },{
             title: "КОНТАКТЫ",
-            url: '/contacts'
+            url: '/ru/contacts'
         },{
             title: "ФОТОГАЛЕРЕЯ",
-            url: '/gallery'
+            url: '/ru/gallery'
+        }
+    ]
+    const menu_kz = [
+        {
+            title: "Негізгі бет",
+            url: '/kz/',
+        },{
+            title: "Біз туралы",
+            url: '/kz/about',
+        },{
+            title: "Карта Трц",
+            type: 'absolute',
+            url: '/map',
+        },{
+            title: "Дүкендер",
+            url: '/kz/store',
+        },{
+            title: "Акциялар",
+            url: '/kz/promotions',
+        },{
+            title: "Мейрамханалар",
+            url: '/kz/food-cort',
+        },{
+            title: "Жалгерлерге",
+            url: '/kz/tenants'
+        },{
+            title: "Контакттар",
+            url: '/kz/contacts'
+        },{
+            title: "Галерея",
+            url: '/kz/gallery'
         }
     ]
     const menu_en = [
@@ -60,7 +104,7 @@ function Header({props}) {
         },{
             title: "Map",
             type: 'absolute',
-            url: '/en/map',
+            url: '/map',
         },{
             title: "Boutiques",
             url: '/en/store',
@@ -84,10 +128,30 @@ function Header({props}) {
     useEffect(() => {
         setMenu(false)
         setMenuItem(location.pathname)
+
     },[location.pathname])
 
     const handleBurger = () => {
         setMenu(!isMenuActive)
+    }
+    const changeLang=(lang)=>{
+        setcurrentlang(lang);
+        console.log(currentLang);
+            API.get(`/contact/info?lang=${lang}`)
+                .then(res => {
+                    setData(res.data?.info)
+                })
+        
+    }
+    const changeLoc=(location)=>{
+        if(location.split(/\//)[2]!=0)
+        setlocation('/'+location.split(/\//)[2])
+        else
+        {
+            setlocation("/")
+        }
+        console.log(location.split(/\//)[2])
+        console.log(loc)
     }
     return (
         <header className="header">
@@ -116,9 +180,9 @@ function Header({props}) {
                         <p>{contacts.work_time}</p>
                     </div>
                     <div className="lang">
-                        <a href="#" className="lang__item">KZ</a>
-                        <a href="#" className="lang__item active">RU</a>
-                        <a href="#" className="lang__item">EN</a>
+                        <Link to={`/kz${loc}`} className={`lang__item ${currentLang==="kz" ? 'active':''}`}><span onClick={()=>changeLang("kz")}>KZ</span></Link>
+                        <Link to={`/ru${loc}`} className={`lang__item ${currentLang==="ru" ? 'active':''}`}><span onClick={()=>changeLang("ru")}>RU</span></Link>
+                        <Link to={`/en${loc}`} className={`lang__item ${currentLang==="en" ? 'active':''}`}><span onClick={()=>changeLang("en")}>EN</span></Link>
                     </div>
                     <div className="logo"></div>
                 </div>
@@ -127,9 +191,22 @@ function Header({props}) {
                 <div className="container">
                     <div className="row">
                         <ul className={`menu ${isMenuActive?'show':''}`}>
-                            {menu.map((item, i) => (
+                            {currentLang==="ru"&& menu.map((item, i) => (
                                 <li className={`menu__item ${item.url === location.pathname? 'active':''}`} key={i}>
-                                    {item.type == "absolute" ? <a href="/map">{item.title}</a> :<Link to={`${item.url}`} >{item.title}</Link>}
+                                    {item.type == "absolute" ? <a href="/map">{item.title}</a> :<Link to={`${item.url}`} ><span onClick={()=>changeLoc(item.url)}>{item.title}</span></Link>}
+                                </li>
+                            ))}{ currentLang==="en" && menu_en.map((item, i) => (
+                                <li className={`menu__item ${item.url === location.pathname? 'active':''}`} key={i}>
+                                    {item.type == "absolute" ? <a href="/map">{item.title}</a> :<Link to={`${item.url}`} ><span onClick={()=>changeLoc(item.url)}>{item.title}</span></Link>}
+                                </li>
+                            ))}{ currentLang==="kz" && menu_kz.map((item, i) => (
+                                <li className={`menu__item ${item.url === location.pathname? 'active':''}`} key={i}>
+                                    {item.type == "absolute" ? <a href="/map">{item.title}</a> :<Link to={`${item.url}`} ><span onClick={()=>changeLoc(item.url)}>{item.title}</span></Link>}
+                                </li>
+                            ))}
+                            {currentLang===""&& menu.map((item, i) => (
+                                <li className={`menu__item ${item.url === location.pathname? 'active':''}`} key={i}>
+                                    {item.type == "absolute" ? <a href="/map">{item.title}</a> :<Link to={`${item.url}`} ><span onClick={()=>changeLoc(item.url)}>{item.title}</span></Link>}
                                 </li>
                             ))}
                         </ul>
