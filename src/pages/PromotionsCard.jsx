@@ -46,7 +46,8 @@ export default function PromotionsCard(props) {
                     <p className="prom_date" Style="margin-top:48px">{new Date(data.created_at).toLocaleDateString()}</p>
                     </div>
                     <div className="col-lg-12">
-                    <p className="promocard_text" Style="margin-top:13px">{data.description}</p>             
+                    <p className="promocard_text" Style="margin-top:13px" dangerouslySetInnerHTML={ {__html: data.description} }/>
+                        
                     </div>
                               
                     </div>

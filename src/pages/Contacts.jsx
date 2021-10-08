@@ -1,6 +1,6 @@
 import React from 'react'
 import API from "../utils/api";
-
+import Icon from "../assets/mail.svg"
 
 export default function Contacts(props) {
     const [contacts, setData] = React.useState([]);
@@ -31,8 +31,14 @@ export default function Contacts(props) {
                     <h2 className="contacts-heading">Привет, свяжитесь с нами!</h2>
                     <p className="contacts-subheading">Либо заполните форму заявки и мы позвоним Вам.</p>
                     <div className="contacts-info">
-                        <p class="nobr">Казахстан, г. Алматы, <br />{contacts.address}</p>
-                        <p>{contacts.work_time}<br /> {contacts.phone}</p>
+                        <p>
+                        <p className="nobr">Казахстан, г. Алматы, <br />{contacts.address}</p>
+                        <p><img src={Icon}/>arenda@kdi.kz</p>
+                        </p>
+                        <p> 
+                            <p>{contacts.work_time}<br /></p>
+                            <p dangerouslySetInnerHTML={ {__html: contacts.phone} }/>
+                        </p>
                     </div>
                     <form className="form-contacts">
                         <input type="text" placeholder="Ваше имя"/> <br />
@@ -48,7 +54,10 @@ export default function Contacts(props) {
                     <p className="contacts-subheading">Немесе байланыс формасын толтырып жибере аласыз, біз сізге хабарласамыз</p>
                     <div className="contacts-info">
                         <p class="nobr">Казахстан, Алматы, <br />{contacts.address}</p>
-                        <p>{contacts.work_time}<br /> {contacts.phone}</p>
+                        <p> 
+                            <p>{contacts.work_time}<br /></p>
+                            <p dangerouslySetInnerHTML={ {__html: contacts.phone} }/>
+                        </p>
                     </div>
                     <form className="form-contacts">
                         <input type="text" placeholder="Ваше имя"/> <br />
@@ -64,7 +73,10 @@ export default function Contacts(props) {
                     <p className="contacts-subheading">Also you can fill our contact form and we contact you. </p>
                     <div className="contacts-info">
                         <p class="nobr">Kazakhstan, Almaty, <br />{contacts.address}</p>
-                        <p>{contacts.work_time}<br /> {contacts.phone}</p>
+                        <p> 
+                            <p>{contacts.work_time}<br /></p>
+                            <p dangerouslySetInnerHTML={ {__html: contacts.phone} }/>
+                        </p>
                     </div>
                     <form className="form-contacts">
                         <input type="text" placeholder=" Your name"/> <br />

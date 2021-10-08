@@ -34,7 +34,7 @@ export default function Tenants(props) {
                     {renters.map((item,i)=>(
                          <div className="article">
                          <h3 className="article_title">{item.title}</h3>
-                         <p className="article_text">{item.description}</p>
+                         <p className="article_text" dangerouslySetInnerHTML={ {__html: item.description} }/>
                      </div>
                     ))}
                 </div>
@@ -70,7 +70,7 @@ export default function Tenants(props) {
                     <input type="text" placeholder="Сіздің почтаңыз"/> <br />
                     <div Style="max-height:150px;"className="col-lg-12 row">
                     <div className="col-lg-7" Style="margin-top:45px">
-                    <input name="file" type="file" Style="opacity:0;visibly:hidden;width:0%; padding:0px;"name="file" id="input__file" className="input input__file" multiple></input>
+                    <input name="file" type="file" Style="opacity:0;visibly:hidden;width:0%; padding:0px;"name="attachment" id="input__file" className="input input__file" multiple></input>
                      <label for="input__file" className="subimt-btn"><span className="submit-btn">Файлды тіркеу</span></label>
                      </div>
                     <button Style="float:right;max-height:82px;" className="submit-btn col-lg-4">Жиберу</button>

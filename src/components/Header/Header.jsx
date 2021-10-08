@@ -164,7 +164,7 @@ function Header({props}) {
                     </button>
                     <div className="tel">
                         <img src={Icon} alt="" />
-                        <a href="tel:+77273561515">{contacts.phone}</a>
+                        <a href="tel:+77273561515">+7 (727) 356 15 15</a>
                     </div>
                     <div className="social">
                         <a href="https://www.facebook.com/pages/category/Shopping-Mall/%D0%A2%D0%A0%D0%A6-Globus-907269146129668/" className="social__icon fb"></a>

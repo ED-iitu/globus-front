@@ -33,7 +33,7 @@ export default function Footer(props) {
                 <div className="footer__content">
                     <div className="mob-tel">
                         <img src={Icon} alt="" />
-                        <p>{contacts.phone}</p>
+                        <p>+7 (727) 356 15 15</p>
                     </div>
                     {props.lang ==="ru" &&<ul className="links">
                         <li className="links__item">
@@ -94,7 +94,7 @@ export default function Footer(props) {
                         </div>
                         <div className="tel">
                             <img src={Icon} alt="" />
-                            <p>{contacts.phone}</p>
+                            <p>+7 (727) 356 15 15</p>
                         </div>
                         <div className="info-block">
                             {props.lang !=="en"&&<p>050000, Казахстан <br /> Алматы, {contacts.address}</p>}

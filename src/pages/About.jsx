@@ -1,6 +1,6 @@
 import React from 'react'
 import "./../styles/pages/about-page.scss"
-import poster from './../assets/about-page.png'
+import poster from './../assets/about-page.jpg'
 import API from './../utils/api';
 
 export default function About(props) {
@@ -113,7 +113,7 @@ export default function About(props) {
                                 <span className={'icon icon' + (i + 1) }></span>
                                 {item.title}
                             </h3>
-                            <p className="text">{item.description}</p>
+                            <p className="text" dangerouslySetInnerHTML={ {__html: item.description} }/>
                         </>
                     ))}
                     {/* <h3 className="sub-title">
