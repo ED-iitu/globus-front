@@ -33,7 +33,9 @@ export default function Contacts(props) {
                     <div className="contacts-info">
                         <p>
                         <p className="nobr">Казахстан, г. Алматы, <br />{contacts.address}</p>
-                        <p><img src={Icon}/>arenda@kdi.kz</p>
+                        <p>j.zhaulbayeva@kdi.kz<br/>
+a.khamitov@kdi.kz<br/>
+i.sagimbekov@kdi.kz</p>
                         </p>
                         <p> 
                             <p>{contacts.work_time}<br /></p>
