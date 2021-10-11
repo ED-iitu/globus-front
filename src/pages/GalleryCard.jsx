@@ -23,7 +23,7 @@ export default function GalleryCard(){
     
     <Gallery>
          <div className="container">
-        <Bread />
+        <Bread lang="ru"/>
              <h1 className="Page_heading">{datas.title}</h1>
              <p className="prom_date" Style="margin-top:48px">{new Date(datas.date).toLocaleDateString()}</p>
              <div className=" galimg">

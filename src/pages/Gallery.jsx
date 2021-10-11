@@ -27,7 +27,7 @@ export default function Gallery(props) {
                 <div className="row">
                     <div className="promotions">
                         {data.map((item, index) => (
-                            <Link to={`/gallery/${item.id}`}   className="prom">
+                            <Link to={`/${props.lang}/gallery/${item.id}`}   className="prom">
                                 <div className="prom_poster" Style="background-color:white;overflow:hidden;">
                                     <img src={API_URL+item.image} class="col-lg-12" alt="" />
                                 </div>
