@@ -2,7 +2,7 @@ import React from 'react'
 import Slider from 'infinite-react-carousel';
 import "./Banner.scss"
 import API from "../../utils/api";
-import banner from './../../assets/banner1.jpg'
+import banner from './../../assets/about-page.jpg'
 import { API_URL } from './../../utils/env';
 
 export default function Banner() {

@@ -56,7 +56,7 @@ export default function PromoEvents(props) {
                     </div>
 
                     <div className="more">
-                        <a href="/promotions">Перейти в <b>акции и события</b></a>
+                        <a href="/ru/promotions">Перейти в <b>акции и события</b></a>
                     </div>
                 </div>}
                 {props.lang==="kz"&&<div className="row">
