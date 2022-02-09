@@ -18,6 +18,7 @@ export default function Cinema(props) {
                 setData(res.data?.data)
             })
     }, []);
+    console.log(cinemas)
     const responsive = {
           desktop: {
             breakpoint: { max: 3000, min: 1024 },
