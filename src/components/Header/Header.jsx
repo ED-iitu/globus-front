@@ -61,6 +61,9 @@ function Header({props}) {
         },{
             title: "ФОТОГАЛЕРЕЯ",
             url: '/ru/gallery'
+        },{
+            title: "ПРАВИЛА ПОСЕЩЕНИЯ",
+            url: '/ru/rules'
         }
     ]
     const menu_kz = [
@@ -92,6 +95,9 @@ function Header({props}) {
         },{
             title: "Галерея",
             url: '/kz/gallery'
+        },{
+            title: "БАРУ ЕРЕЖЕЛЕРІ",
+            url: '/kz/rules'
         }
     ]
     const menu_en = [
@@ -123,6 +129,9 @@ function Header({props}) {
         },{
             title: "Gallery",
             url: '/en/gallery'
+        },{
+            title: "Visiting Rules",
+            url: '/en/rules'
         }
     ]
     useEffect(() => {

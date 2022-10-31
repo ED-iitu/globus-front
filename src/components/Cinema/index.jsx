@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import "./Cinema.scss"
@@ -7,18 +7,47 @@ import axios from 'axios';
 import API from "../../utils/api";
 export default function Cinema(props) {
     const [cinemas, setData] = React.useState([]);
+    const [cinema, setDat] = React.useState([]);
     const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzcC5raW5vcGFyayIsInN1YiI6Imdsb2J1cy5wcm9kIiwibmFtZSI6ImFmaXNoYS50ZXN0In0.vOHcPMJqiKrAo95PFyfv3LF3lvwaZqmfaGmKSmC7rvI";
-
+    const list = [{
+        name:"Тайна Сен-Тропе",
+        images:{
+            vertical: "https://cdn.kino.kz/movies/Myst_re___Saint-Tropez/p599x300.jpg"
+        }
+    },{
+        name:"Круиз по Джунглям",
+        images:{ vertical:"https://cdn.kino.kz/movies/Jungle_Cruise/p599x300.jpg"
+         }
+    },{
+        name:"Космический джем",
+        images:{ vertical:"https://cdn.kino.kz/movies/Space_Jam__A_New_Legacy/p599x300.jpg"
+    }
+    },{
+        name:"Чёрная вдова",
+        images:{ vertical: "https://cdn.kino.kz/movies/Black_Widow/p599x300.jpg"
+    }
+    },{
+        name:"Проклятье пиковой дамы",
+        images:{ vertical: "https://cdn.kino.kz/movies/Queen_of_Spades/p599x300.jpg"
+    }
+    },]
     React.useEffect(() => {
         axios.get(`https://afisha.api.kinopark.kz/api/movie/today?date_from=&date_to=&sort=seance.start_time&cinema=03edce61-39b8-427c-9aa8-48296a37f227&dial_timeout=5s&request_timeout=5s&retries=0`,
         {headers: {
             'Authorization': `Bearer ${token}`
           }})
             .then(res => {
+                console.log(res)
                 setData(res.data?.data)
+                
             })
+            
     }, []);
-    console.log(cinemas)
+    if(cinemas==null)
+    {
+        setDat(list)
+    }
+    console.log(cinema)
     const responsive = {
           desktop: {
             breakpoint: { max: 3000, min: 1024 },
@@ -38,22 +67,8 @@ export default function Cinema(props) {
         // }
     }, [])
 
-    const list = [{
-            title:"Тайна Сен-Тропе",
-            poster: "https://cdn.kino.kz/movies/Myst_re___Saint-Tropez/p599x300.jpg"
-        },{
-            title:"Круиз по Джунглям",
-            poster: "https://cdn.kino.kz/movies/Jungle_Cruise/p599x300.jpg"
-        },{
-            title:"Космический джем",
-            poster: "https://cdn.kino.kz/movies/Space_Jam__A_New_Legacy/p599x300.jpg"
-        },{
-            title:"Чёрная вдова",
-            poster: "https://cdn.kino.kz/movies/Black_Widow/p599x300.jpg"
-        },{
-            title:"Проклятье пиковой дамы",
-            poster: "https://cdn.kino.kz/movies/Queen_of_Spades/p599x300.jpg"
-    },]
+    
+    
     return (
         <div className="cinema">
            {props.lang==="ru"&& <div className="container">

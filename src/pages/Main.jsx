@@ -115,8 +115,9 @@ export default function Main(props) {
                             {data.map((item, i) => (
                         <p className="text">{item.description}</p>
                     ))}
-
-                                <a href="/map" className="link-to-map mobile"> интерактивті картаны қарау</a>
+                                <div className='inter-map'>
+                                    <a href="/map" className="link-to-map mobile"> интерактивті картаны қарау</a>
+                                </div>
                             </div>}
                         </div>
                     </div>

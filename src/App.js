@@ -8,6 +8,7 @@ import {
 
 import Main from "./pages/Main";
 import About from "./pages/About";
+import Rules from "./pages/Rules";
 import Map from "./pages/Map";
 import Store from "./pages/Store";
 import Promotions from "./pages/Promotions";
@@ -139,6 +140,15 @@ function App() {
             </Route>
             <Route exact path="/kz/store/:slug">
               <StoreCard lang={"kz"}/>
+            </Route>
+            <Route exact path="/kz/rules">
+              <Rules lang={"kz"} />
+            </Route>
+            <Route exact path="/en/rules">
+              <Rules lang={"en"} />
+            </Route>
+            <Route exact path="/ru/rules">
+              <Rules lang={"ru"} />
             </Route>
           </Switch>
         </div>
