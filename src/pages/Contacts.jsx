@@ -33,9 +33,9 @@ export default function Contacts(props) {
                     <div className="contacts-info">
                         <p>
                         <p className="nobr">Казахстан, г. Алматы, <br />{contacts.address}</p>
-                        <p>j.zhaulbayeva@kdi.kz<br/>
-a.khamitov@kdi.kz<br/>
-i.sagimbekov@kdi.kz</p>
+                        <p>f.nurmakhanova@kdi.kz<br/>
+                        a.osmanova@kdi.kz<br/></p>
+
                         </p>
                         <p> 
                             <p>{contacts.work_time}<br /></p>
@@ -56,9 +56,8 @@ i.sagimbekov@kdi.kz</p>
                     <p className="contacts-subheading">Немесе байланыс формасын толтырып жибере аласыз, біз сізге хабарласамыз</p>
                     <div className="contacts-info">
                         <p class="nobr">Казахстан, Алматы, <br />{contacts.address}</p>
-                        <p>j.zhaulbayeva@kdi.kz<br/>
-a.khamitov@kdi.kz<br/>
-i.sagimbekov@kdi.kz</p>
+                        <p>f.nurmakhanova@kdi.kz<br/>
+                        a.osmanova@kdi.kz<br/></p>
                         <p> 
                             <p>{contacts.work_time}<br /></p>
                             <p dangerouslySetInnerHTML={ {__html: contacts.phone} }/>
@@ -78,9 +77,8 @@ i.sagimbekov@kdi.kz</p>
                     <p className="contacts-subheading">Also you can fill our contact form and we contact you. </p>
                     <div className="contacts-info">
                         <p class="nobr">Kazakhstan, Almaty, <br />{contacts.address}</p>
-                        <p>j.zhaulbayeva@kdi.kz<br/>
-a.khamitov@kdi.kz<br/>
-i.sagimbekov@kdi.kz</p>
+                        <p>f.nurmakhanova@kdi.kz<br/>
+                        a.osmanova@kdi.kz<br/></p>
                         <p> 
                             <p>{contacts.work_time}<br /></p>
                             <p dangerouslySetInnerHTML={ {__html: contacts.phone} }/>

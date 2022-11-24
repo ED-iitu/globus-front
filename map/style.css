@@ -32,9 +32,14 @@ h1.maptitleact
 	font-size: 2rem;
 	color:white;
 }
+h4.maptitleact
+{
+
+	color:white;
+}
 .mapnav{
     position: absolute;
-    width: 23%;
+    width: 46%;
     left: 45%;
     top: 33px;
     text-align: center;
